@@ -6,17 +6,157 @@
     android:layout_height="match_parent"
     tools:context=".activity.ui.about.AboutFragment">
 
-    <TextView
-        android:id="@+id/text_slideshow"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/img1"
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                app:srcCompat="@mipmap/logo" />
+            <TextView
+                android:id="@+id/title_about_us"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="About Us"
+                android:textAlignment="center"
+                android:textSize="40sp"
+                android:textStyle="bold" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="We are a company specialized in Hydro Jetting, committed to providing high-quality services with a guarantee and at affordable prices. Our mission is to offer efficient and safe solutions for the maintenance and cleaning of hydraulic systems, using advanced technology and a team of trained professionals. We are dedicated to meeting the needs of our clients, ensuring their complete satisfaction and trust in our services."
+                android:textAlignment="center"
+                android:textSize="16sp" />
+
+            <!--Hydro Jetting-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="\nHydro Jetting Service Done By Pros You Can Trust"
+                android:textAlignment="center"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Have a tough clog (or multiple clogs) that you just can't seem to get rid of? Hire a team of pros you can trust to safely and effectively clear your lines via hydro jetting. No matter how tough or extensive your clog is, we'll take the time to ensure hydro jetting is the best method for your situation and make sure it's done correctly the first time around."
+                android:textAlignment="center"
+                android:textSize="16sp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="\nWe also offer:"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="-24/7 emergency service\n-100% satisfaction guarantee on all of our work\n-Fair and honest pricing\n-4.7 star rating on Google…"
+                android:textAlignment="center"
+                android:textSize="16sp" />
+            <!--Hydro Jetting Includes-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="\nYour hydro jetting service includes:"
+                android:textAlignment="center"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="\nProblem diagnosis:"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Before we begin your hydro jetting service, we'll take the time to carefully assess your drain line and help you determine if hydro jetting is the best option for you."
+                android:textAlignment="center"
+                android:textSize="16sp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="\nUpfront pricing:"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Before we begin working on your drain line, we'll provide you with an upfront quote on the service. We never want you to be shocked by or uncomfortable with the final bill you see, so we will ensure that you're comfortable with the price before we get to work."
+                android:textAlignment="center"
+                android:textSize="16sp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="\nFlexible financing options:"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="We offer flexible financing options so that regardless of whether you've budgeted for hydro jetting or not, you can rest assured that your drains are cleared."
+                android:textAlignment="center"
+                android:textSize="16sp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="\n100% satisfaction guaranteed:"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="We want to make sure you're 100% satisfied with the job we've done...if you're not, we'll redo the job on our own dime.\n"
+                android:textAlignment="center"
+                android:textSize="16sp"/>
+
+            <!--Localizacion-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:text="\nWhere Are We"
+                android:textSize="30sp"
+                android:textStyle="bold"/>
+
+            <WebView
+                android:id="@+id/webviewLocalization"
+                android:layout_width="match_parent"
+                android:layout_height="600dp"/>
+
+            <!--Comentarios-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:text="\nWHAT DO OUR CUSTOMERS SAY?"
+                android:textSize="30sp"
+                android:textStyle="bold"/>
+
+            <WebView
+                android:id="@+id/webviewBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
