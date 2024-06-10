@@ -17,4 +17,6 @@
     <string name="menu_jobs">Our Jobs</string>
     <string name="menu_about">About Us</string>
     <string name="menu_contact">Contact Us</string>
+
+    <string name="drain_bottom">DRAIN CLEARING/CLEANING</string>
 </resources>
