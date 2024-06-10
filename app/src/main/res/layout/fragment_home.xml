@@ -6,17 +6,129 @@
     android:layout_height="match_parent"
     tools:context=".activity.ui.home.HomeFragment">
 
-    <TextView
-        android:id="@+id/text_home"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/img1"
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                app:srcCompat="@mipmap/logo" />
+
+            <TextView
+                android:id="@+id/text_whoTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="\nWho are we?"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/text_whoText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="We are a company specialized in Hydro Jetting, committed to providing high-quality services with a guarantee and at affordable prices. Our mission is to offer efficient and safe solutions for the maintenance and cleaning of hydraulic systems, using advanced technology and a team of trained professionals. We are dedicated to meeting the needs of our clients, ensuring their complete satisfaction and trust in our services."
+                android:textAlignment="center"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/text_whyTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="\nWhy Hydro Jetting?"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/text_whyText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Persistent clogs and debris buildup can reduce water pressure and damage pipes. When drain cleaners fail, professional hydro jetting may be necessary."
+                android:textAlignment="center"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/text_whatTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="\nWhat Is Hydro Jetting?"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/text_whatText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hydro jetting uses high-pressure water jets to clear clogs and clean pipe walls, removing grease, food particles, mineral scale, debris, and sometimes tree roots, preventing future blockages."
+                android:textAlignment="center"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/text_howTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="\nHow Does Hydro Jetting Work?"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/text_howText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1.System Inspection: Plumbers use a video inspection to locate major blockages and assess pipe condition. If pipes can't withstand the pressure, alternatives like snaking or augering are used.
+\n\n2.High-Pressure Cleaning: Hoses are inserted and water is pressurized up to 35,000 psi to clear debris, which is flushed out of the system."
+                android:textAlignment="center"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/text_whatCanTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="\nWhat Can Be Removed?"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/text_whatCanText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hydro jetting removes hair, mineral deposits, grease, food deposits, silt, sand, and some tree roots."
+                android:textAlignment="center"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/text_signsTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="\nSigns You Need Hydro Jetting"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/text_signsText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="-Frequent plumbing backups\n-Smelly drains\n-Noisy or gurgling pipes\n-Regular clogs despite careful drain use\n-Slow drains\n"
+                android:textAlignment="center"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
