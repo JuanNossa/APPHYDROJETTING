@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "794340707339",
+    "project_id": "apphydrojetting",
+    "storage_bucket": "apphydrojetting.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:794340707339:android:d932ef9d7b030207e18b0e",
+        "android_client_info": {
+          "package_name": "com.example.apphydrojetting"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBMtc9-8YRme1niUhhjGnzPzF40jENtEko"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
