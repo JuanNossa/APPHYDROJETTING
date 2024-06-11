@@ -46,7 +46,7 @@ public class LoginActivity extends AppCompatActivity {
                     if (task.isSuccessful()) {
                         // Login success, navigate to main activity
                         FirebaseUser user = mAuth.getCurrentUser();
-                        Intent intent = new Intent(LoginActivity.this, InicioActivity.class);
+                        Intent intent = new Intent(LoginActivity.this, AppointmentsActivity.class);
                         startActivity(intent);
                         finish();
                     } else {
