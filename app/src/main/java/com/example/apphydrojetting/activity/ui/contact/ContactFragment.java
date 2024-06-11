@@ -69,7 +69,7 @@ public class ContactFragment extends Fragment {
         String streetAddress = binding.etStreetAddress.getText().toString();
         String city = binding.etCity.getText().toString();
         String phone = binding.etPhone.getText().toString();
-        int status = 1;
+        int status = 2;
 
         if (serviceType.isEmpty() || whatNeed.isEmpty() || homeOrBusiness.isEmpty() || description.isEmpty() ||
                 date.isEmpty() || availableTime.isEmpty() || firstName.isEmpty() || lastName.isEmpty() ||
