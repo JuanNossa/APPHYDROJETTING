@@ -23,10 +23,10 @@ import java.util.Map;
 public class ContactFragment extends Fragment {
 
     private FragmentContactBinding binding;
-    //conexión base de datos
+    //Declaración de variable para la conexión a Firebase
     private FirebaseFirestore db;
 
-    @Override
+    @Override //Inicialización de ContactViewModel usando ViewModelProvider
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         ContactViewModel contactViewModel = new ViewModelProvider(this).get(ContactViewModel.class);
 
@@ -36,9 +36,11 @@ public class ContactFragment extends Fragment {
         final TextView textView = binding.titleContactUs;
         contactViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
 
-        //Instanciamiento base de datos
+        //Inicialización de Firestore
         db = FirebaseFirestore.getInstance();
+        //Asignar OnClickListener para mostrar el DatePickerDialog
         binding.etDate.setOnClickListener(v -> showDatePickerDialog());
+        //Asignar OnClickListener para enviar el formulario
         binding.btnRequestAppointment.setOnClickListener(v -> submitForm());
 
         return root;
@@ -50,15 +52,16 @@ public class ContactFragment extends Fragment {
         int year = c.get(Calendar.YEAR);
         int month = c.get(Calendar.MONTH);
         int day = c.get(Calendar.DAY_OF_MONTH);
-
+        //Crear y mostrar el DatePickerDialog con la fecha mínima de hoy
         DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(),
                 (view, year1, monthOfYear, dayOfMonth) -> binding.etDate.setText(dayOfMonth + "-" + (monthOfYear + 1) + "-" + year1), year, month, day);
         datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
         datePickerDialog.show();
     }
 
-    //Captura de la inforamción del formulario para el agendamiento
+    //Método para enviar el formulario
     private void submitForm() {
+        // Captura de datos del formulario
         String serviceType = ((RadioButton) getView().findViewById(binding.serviceTypeGroup.getCheckedRadioButtonId())).getText().toString();
         String whatNeed = "";
         if (binding.cbPlumbing.isChecked()) whatNeed += "Plumbing ";
@@ -75,15 +78,14 @@ public class ContactFragment extends Fragment {
         String phone = binding.etPhone.getText().toString();
         int status = 2;
         int serviceTypeOrder = 0;
-
+        //Validación de campos obligatorios
         if (serviceType.isEmpty() || whatNeed.isEmpty() || homeOrBusiness.isEmpty() || description.isEmpty() ||
                 dateStr.isEmpty() || availableTime.isEmpty() || firstName.isEmpty() || lastName.isEmpty() ||
                 email.isEmpty() || streetAddress.isEmpty() || city.isEmpty() || phone.isEmpty()) {
             Toast.makeText(getContext(), "All fields are required", Toast.LENGTH_SHORT).show();
             return;
         }
-
-        // Convertir la fecha a timestamp
+        //Conversión de la fecha a timestamp
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
         Date date = null;
         try {
@@ -103,7 +105,7 @@ public class ContactFragment extends Fragment {
         if (serviceType.equalsIgnoreCase("New Install/replacement")){
             serviceTypeOrder = 3;
         }
-
+        //Creación del mapa de datos y envío a Firestore
         Map<String, Object> appointment = new HashMap<>();
         appointment.put("serviceType", serviceType);
         appointment.put("whatNeed", whatNeed);
@@ -130,7 +132,7 @@ public class ContactFragment extends Fragment {
                 .addOnFailureListener(e -> Toast.makeText(getContext(), "Failed to request appointment", Toast.LENGTH_SHORT).show());
     }
 
-    //Metodo para limpiar el formulario
+    //Método para limpiar el formulario
     private void clearForm() {
         binding.serviceTypeGroup.clearCheck();
         binding.cbPlumbing.setChecked(false);

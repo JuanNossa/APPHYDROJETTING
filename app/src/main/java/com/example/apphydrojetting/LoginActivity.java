@@ -13,22 +13,22 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class LoginActivity extends AppCompatActivity {
-
-    //Variables de Firebase
+    //Declaración variable de Autenticación para Firebase
     private FirebaseAuth mAuth;
+    //Declaración de variables para los elementos de la interfaz
     private EditText emailEditText, passwordEditText;
     private Button loginButton;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
+        //Inicialización de FirebaseAuth
         mAuth = FirebaseAuth.getInstance();
+        //Inicialización de los elementos de la interfaz
         emailEditText = findViewById(R.id.email);
         passwordEditText = findViewById(R.id.password);
         loginButton = findViewById(R.id.login_button);
-
+        //Asignar OnClickListener para el botón de inicio de sesión
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

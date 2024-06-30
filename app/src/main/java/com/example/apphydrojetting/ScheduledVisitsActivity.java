@@ -24,7 +24,7 @@ import java.util.Locale;
 import java.util.Map;
 
 public class ScheduledVisitsActivity extends AppCompatActivity {
-
+    //Declaración de las variables para Firestore, RecyclerView y el Adaptador
     private FirebaseFirestore db;
     private RecyclerView recyclerView;
     private VisitsAdapter adapter;
@@ -33,24 +33,25 @@ public class ScheduledVisitsActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_visits);
-
+        //Inicialización de RecyclerView y Spinner
         recyclerView = findViewById(R.id.recycler_view_visits);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         Spinner filterSpinner = findViewById(R.id.filter_spinner);
-
+        //Inicialización de Firestore
         db = FirebaseFirestore.getInstance();
+        //Cargar visitas con estado 1 (Scheduled)
         loadVisits(1);
 
-        filterSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        filterSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {//Método para manejar la selección del filtro
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String filterOption = parent.getItemAtPosition(position).toString();
-                if (filterOption.equals("Date")) {
+                if (filterOption.equals("Date")) { //Filtrar por fecha
                     loadVisitsByDate(1);
-                } else if (filterOption.equals("Service Type")) {
+                } else if (filterOption.equals("Service Type")) { //Filtrar por tipo de servicio
                     loadVisitsByServiceType(1);
-                } else {
+                } else { //Cargar todas las visitas
                     loadVisits(1);
                 }
             }
@@ -61,7 +62,8 @@ public class ScheduledVisitsActivity extends AppCompatActivity {
         });
     }
 
-    private void loadVisits(int status) {
+    private void loadVisits(int status) { //Método para cargar visitas por estado
+        //Obtener documentos de Firestore y actualizar el adaptador
         db.collection("appointments")
                 .whereEqualTo("status", status)
                 .get()
@@ -77,7 +79,8 @@ public class ScheduledVisitsActivity extends AppCompatActivity {
                 });
     }
 
-    private void loadVisitsByDate(int status) {
+    private void loadVisitsByDate(int status) { //Método para cargar visitas por fecha
+        //Obtener documentos ordenados por timestamp y actualizar el adaptador
         db.collection("appointments")
                 .whereEqualTo("status", status)
                 .orderBy("timestamp", Query.Direction.ASCENDING)
@@ -97,7 +100,7 @@ public class ScheduledVisitsActivity extends AppCompatActivity {
                 .addOnFailureListener(e -> Toast.makeText(ScheduledVisitsActivity.this, "Error loading visits: " + e.getMessage(), Toast.LENGTH_SHORT).show());
     }
 
-    private void loadVisitsByServiceType(int status) {
+    private void loadVisitsByServiceType(int status) { //Método para cargar visitas por tipo de servicio
         db.collection("appointments")
                 .whereEqualTo("status", status)
                 .get()
@@ -123,7 +126,7 @@ public class ScheduledVisitsActivity extends AppCompatActivity {
                 .addOnFailureListener(e -> Toast.makeText(ScheduledVisitsActivity.this, "Error loading visits: " + e.getMessage(), Toast.LENGTH_SHORT).show());
     }
 
-    private int getServiceTypeOrder(String serviceType) {
+    private int getServiceTypeOrder(String serviceType) { //Obtener documentos y ordenarlos por tipo de servicio, luego actualizar el adaptador
         switch (serviceType) {
             case "Repair":
                 return 1;
