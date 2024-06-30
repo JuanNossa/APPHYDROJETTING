@@ -19,4 +19,9 @@
     <string name="menu_contact">Contact Us</string>
 
     <string name="drain_bottom">DRAIN CLEARING/CLEANING</string>
+
+    <string-array name="filter_options">
+        <item>Date</item>
+        <item>Service Type</item>
+    </string-array>
 </resources>
