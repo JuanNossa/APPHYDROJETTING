@@ -12,8 +12,12 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.apphydrojetting.databinding.FragmentContactBinding;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 public class ContactFragment extends Fragment {
@@ -61,7 +65,7 @@ public class ContactFragment extends Fragment {
         if (binding.cbDuctCleaning.isChecked()) whatNeed += "Duct cleaning/sealing ";
         String homeOrBusiness = ((RadioButton) getView().findViewById(binding.homeBusinessGroup.getCheckedRadioButtonId())).getText().toString();
         String description = binding.etDescription.getText().toString();
-        String date = binding.etDate.getText().toString();
+        String dateStr = binding.etDate.getText().toString();
         String availableTime = ((RadioButton) getView().findViewById(binding.timeGroup.getCheckedRadioButtonId())).getText().toString();
         String firstName = binding.etFirstName.getText().toString();
         String lastName = binding.etLastName.getText().toString();
@@ -70,12 +74,34 @@ public class ContactFragment extends Fragment {
         String city = binding.etCity.getText().toString();
         String phone = binding.etPhone.getText().toString();
         int status = 2;
+        int serviceTypeOrder = 0;
 
         if (serviceType.isEmpty() || whatNeed.isEmpty() || homeOrBusiness.isEmpty() || description.isEmpty() ||
-                date.isEmpty() || availableTime.isEmpty() || firstName.isEmpty() || lastName.isEmpty() ||
+                dateStr.isEmpty() || availableTime.isEmpty() || firstName.isEmpty() || lastName.isEmpty() ||
                 email.isEmpty() || streetAddress.isEmpty() || city.isEmpty() || phone.isEmpty()) {
             Toast.makeText(getContext(), "All fields are required", Toast.LENGTH_SHORT).show();
             return;
+        }
+
+        // Convertir la fecha a timestamp
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
+        Date date = null;
+        try {
+            date = sdf.parse(dateStr);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        long timestamp = date != null ? date.getTime() : 0;
+
+        //asignar tipo de servicios
+        if (serviceType.equalsIgnoreCase("Repair")){
+            serviceTypeOrder = 1;
+        }
+        if (serviceType.equalsIgnoreCase("Maintenance Visit")){
+            serviceTypeOrder = 2;
+        }
+        if (serviceType.equalsIgnoreCase("New Install/replacement")){
+            serviceTypeOrder = 3;
         }
 
         Map<String, Object> appointment = new HashMap<>();
@@ -83,7 +109,8 @@ public class ContactFragment extends Fragment {
         appointment.put("whatNeed", whatNeed);
         appointment.put("homeOrBusiness", homeOrBusiness);
         appointment.put("description", description);
-        appointment.put("date", date);
+        appointment.put("date", dateStr);
+        appointment.put("timestamp", timestamp);
         appointment.put("availableTime", availableTime);
         appointment.put("firstName", firstName);
         appointment.put("lastName", lastName);
@@ -92,6 +119,7 @@ public class ContactFragment extends Fragment {
         appointment.put("city", city);
         appointment.put("phone", phone);
         appointment.put("status", status);
+        appointment.put("serviceTypeOrder", serviceTypeOrder);
 
         db.collection("appointments")
                 .add(appointment)

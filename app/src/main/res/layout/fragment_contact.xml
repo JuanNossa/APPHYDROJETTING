@@ -117,6 +117,8 @@
                 android:id="@+id/etDescription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:imeOptions="actionNext"
                 android:hint="Describe the problem"/>
 
             <!-- Step 2 -->
@@ -188,36 +190,48 @@
                 android:id="@+id/etFirstName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:imeOptions="actionNext"
                 android:hint="First Name"/>
 
             <EditText
                 android:id="@+id/etLastName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:imeOptions="actionNext"
                 android:hint="Last Name"/>
 
             <EditText
                 android:id="@+id/etEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:imeOptions="actionNext"
                 android:hint="Email"/>
 
             <EditText
                 android:id="@+id/etStreetAddress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:imeOptions="actionNext"
                 android:hint="Street Address"/>
 
             <EditText
                 android:id="@+id/etCity"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:imeOptions="actionNext"
                 android:hint="City"/>
 
             <EditText
                 android:id="@+id/etPhone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:imeOptions="actionNext"
                 android:hint="Phone"/>
 
             <Button
@@ -226,7 +240,8 @@
                 android:layout_height="wrap_content"
                 android:text="Request Appointment"
                 android:layout_marginTop="16dp"
-                android:layout_marginBottom="20dp"/>
+                android:layout_marginBottom="20dp"
+                android:backgroundTint="@color/light_blue_600"/>
 
         </LinearLayout>
 
