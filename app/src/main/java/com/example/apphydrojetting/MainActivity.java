@@ -16,39 +16,31 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        findViewById(R.id.button_visit_scheduled).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, ScheduledVisitsActivity.class);
-                startActivity(intent);
-            }
+        // Botón para ver visitas agendadas
+        findViewById(R.id.button_visit_scheduled).setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, ScheduledVisitsActivity.class);
+            startActivity(intent);
         });
 
-        findViewById(R.id.button_visit_not_scheduled).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, NotScheduledVisitsActivity.class);
-                startActivity(intent);
-            }
+        // Botón para ver visitas no agendadas
+        findViewById(R.id.button_visit_not_scheduled).setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, NotScheduledVisitsActivity.class);
+            startActivity(intent);
         });
 
-        findViewById(R.id.button_visit_closed).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, ClosedVisitsActivity.class);
-                startActivity(intent);
-            }
+        // Botón para ver visitas cerradas
+        findViewById(R.id.button_visit_closed).setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, ClosedVisitsActivity.class);
+            startActivity(intent);
         });
 
+        // Botón para cerrar sesión
         Button logoutButton = findViewById(R.id.button_logout);
-        logoutButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FirebaseAuth.getInstance().signOut();
-                Intent intent = new Intent(MainActivity.this, InicioActivity.class);
-                startActivity(intent);
-                finish();
-            }
+        logoutButton.setOnClickListener(v -> {
+            FirebaseAuth.getInstance().signOut();
+            Intent intent = new Intent(MainActivity.this, InicioActivity.class);
+            startActivity(intent);
+            finish();
         });
     }
 }
