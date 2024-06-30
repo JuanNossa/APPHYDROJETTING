@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="16dp"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@mipmap/logo" />
+
+    <Button
+        android:id="@+id/button_visit_scheduled"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Visit Scheduled"
+        android:backgroundTint="@color/light_blue_600"/>
+
+    <Button
+        android:id="@+id/button_visit_not_scheduled"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Visit Not Scheduled"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/light_blue_900"/>
+
+    <Button
+        android:id="@+id/button_visit_closed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Visit Closed"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/light_blue_600"/>
+
+    <Button
+        android:id="@+id/button_logout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Logout"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/light_blue_900"/>
+</LinearLayout>
